@@ -1,0 +1,30 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.36">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.31">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.78">
+    <script>node(&apos;toolspod&apos;) {
+        stage(&apos;Checkout&apos;){
+            git &apos;https://github.com/gabrielf/maven-samples.git&apos;
+        }
+        
+        stage(&apos;Build&apos;) {
+            container(&apos;toolscontainer&apos;) {
+              sh &quot;&quot;&quot;mvn clean package
+              curl --version
+              &quot;&quot;&quot;
+            }
+        } // stage
+    }</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

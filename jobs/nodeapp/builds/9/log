@@ -1,0 +1,264 @@
+Started by user [8mha:////4IxpKR9OkGFU7aTKau6j3/nBJGSdPZaMgVwhXmqOHIElAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running in Durability level: MAX_SURVIVABILITY
+[8mha:////4E5B1sbF2tG+VlhgsWQt03w8jdJ5sZUY4eoC3Iy9b80PAAAAoh+LCAAAAAAAAP9tjTEOwjAQBM8BClpKHuFItIiK1krDC0x8GCfWnbEdkooX8TX+gCESFVvtrLSa5wtWKcKBo5UdUu8otU4GP9jS5Mixv3geZcdn2TIl9igbHBs2eJyx4YwwR1SwULBGaj0nRzbDRnX6rmuvydanHMu2V1A5c4MHCFXMWcf8hSnC9jqYxPTz/BXAFEIGsfuclm8zQVqFvQAAAA==[0m[Pipeline] Start of Pipeline
+[8mha:////4KetrvheRQNSHQ/EU1JbY2AZtx+FrrDqPQZJ5NkFmsLTAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycohUghExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jduZBmjwAAAAA==[0m[Pipeline] node
+Still waiting to schedule task
+‘Jenkins’ doesn’t have label ‘nodepod’
+Agent [8mha:////4BcUwOwggm9b4TTfcZwr0RVAwZob8s3oQHa5oBZ6Yx0fAAAAqR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzhEgZZ/eT83ILSktQi/azUvOzMvGLdxPTUvBLdJAvj7CIAYnoxz9IAAAA=[0mjenkins-agent-b83kr is provisioned from template Kubernetes Pod Template
+---
+apiVersion: "v1"
+kind: "Pod"
+metadata:
+  annotations: {}
+  labels:
+    jenkins: "slave"
+    jenkins/label: "nodepod"
+  name: "jenkins-agent-b83kr"
+spec:
+  containers:
+  - args:
+    - "cat"
+    command:
+    - "/bin/sh"
+    - "-c"
+    image: "node:10-alpine3.10"
+    imagePullPolicy: "IfNotPresent"
+    name: "node"
+    resources:
+      limits: {}
+      requests: {}
+    securityContext:
+      privileged: false
+    tty: true
+    volumeMounts:
+    - mountPath: "/var/run/docker.sock"
+      name: "volume-0"
+      readOnly: false
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+    workingDir: "/home/jenkins/agent"
+  - args:
+    - "cat"
+    command:
+    - "/bin/sh"
+    - "-c"
+    image: "docker:17.11.0-ce"
+    imagePullPolicy: "IfNotPresent"
+    name: "docker"
+    resources:
+      limits: {}
+      requests: {}
+    securityContext:
+      privileged: false
+    tty: true
+    volumeMounts:
+    - mountPath: "/var/run/docker.sock"
+      name: "volume-0"
+      readOnly: false
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+    workingDir: "/home/jenkins/agent"
+  - env:
+    - name: "JENKINS_SECRET"
+      value: "********"
+    - name: "JENKINS_TUNNEL"
+      value: "10.96.197.11:50000"
+    - name: "JENKINS_AGENT_NAME"
+      value: "jenkins-agent-b83kr"
+    - name: "JENKINS_NAME"
+      value: "jenkins-agent-b83kr"
+    - name: "JENKINS_AGENT_WORKDIR"
+      value: "/home/jenkins/agent"
+    - name: "JENKINS_URL"
+      value: "http://34.107.220.208/"
+    image: "jenkins/jnlp-slave:3.35-5-alpine"
+    name: "jnlp"
+    volumeMounts:
+    - mountPath: "/var/run/docker.sock"
+      name: "volume-0"
+      readOnly: false
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  hostNetwork: false
+  nodeSelector:
+    beta.kubernetes.io/os: "linux"
+  restartPolicy: "Never"
+  securityContext: {}
+  volumes:
+  - hostPath:
+      path: "/var/run/docker.sock"
+    name: "volume-0"
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"
+
+Running on [8mha:////4BgCR++SGDzGH0K1x6THSjVswXZc3kGj4y0LsvSH1TDhAAAAqh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzhEgY5/eT83ILSktQi/azUvOzMvGLdxPTUvBLdJAvj7CJ9AKnaiMnTAAAA[0mjenkins-agent-b83kr in /home/jenkins/agent/workspace/nodeapp
+[8mha:////4O2MiGpj9hudVOpa9GaQLZaKUuUK2NIGCR2xTeR7jcRTAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gA0xsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfoP95RwAAAAA==[0m[Pipeline] {
+[8mha:////4LM1EatL2gH+/pZBsjb94+00lEjU0f2SgR8G3YUNUXHHAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gQkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jc09154wAAAAA==[0m[Pipeline] stage
+[8mha:////4AeKZqYVs+TBASPY58oMxPVp3ue8JJF1WWLVrjvM62jzAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0ggUxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jek7ggRwAAAAA==[0m[Pipeline] { (Checkout)
+[8mha:////4PXNtcFFA/o3w0ylM0N6vWu/rfzL1FPfTL6ddAbPwf5OAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbaWGsbAmNJ0AWEZb8zwLrbuWJvJp3kLiJlZNMMm+a93rDOic4UbLcG+wdZu14DKOti0+U+lugiXu6ck2YKRguzSSpM+cFJRUDS1gDKwEbgzpQdmgLbIVXD9UGhba9lFS/o4DGdQM8gYlqLiqVL8wJdvexy4Q/z18BzLEA29ce4gfg7KmOvAAAAA==[0m[Pipeline] git
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/contentful/the-example-app.nodejs.git
+ > git init /home/jenkins/agent/workspace/nodeapp # timeout=10
+Fetching upstream changes from https://github.com/contentful/the-example-app.nodejs.git
+ > git --version # timeout=10
+ > git fetch --tags --force --progress -- https://github.com/contentful/the-example-app.nodejs.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/contentful/the-example-app.nodejs.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/contentful/the-example-app.nodejs.git # timeout=10
+Fetching upstream changes from https://github.com/contentful/the-example-app.nodejs.git
+ > git fetch --tags --force --progress -- https://github.com/contentful/the-example-app.nodejs.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 59cb4e3f51bdb76a1bedd105fbd5fb3be82adf1a (refs/remotes/origin/master)
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 59cb4e3f51bdb76a1bedd105fbd5fb3be82adf1a # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b master 59cb4e3f51bdb76a1bedd105fbd5fb3be82adf1a # timeout=10
+Commit message: "build(deps): bump handlebars from 4.0.11 to 4.5.3 (#135)"
+ > git rev-list --no-walk 59cb4e3f51bdb76a1bedd105fbd5fb3be82adf1a # timeout=10
+[8mha:////4CJ6ClFou2YJgvX5mUQDtMBQILX6fikfnKfEUgkCl9/3AAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbGRNjZUtoPAGyiLDkfxZYdytP5NW8g8RNrJxkknnTvNcb1jnBiZLl3mDvMGvHYxhtXXyi1N8CTdzTlWvCTMFwaSZJnTkvKKkYWMIaWAnYGNSBskNbYCu8eqg2KLTtpaT6HQU0rhvgCUxUc1GpfGFOsLuPXSb8ef4KYI6xADvU7j9Dg2gqvAAAAA==[0m[Pipeline] }
+[8mha:////4OuK6S+jQ840Gkop38h9A0eOsIqM/B3lS1WMMLOxww9gAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQRbWRhjZUtoPAGyiLDkfxZYdytP5NW8g8RNrJxkknnTvNcb1jnBiZLl3mDvMGvHYxhtXXyi1N8CTdzTlWvCTMFwaSZJnTkvKKkYWMIaWAnYGNSBskNbYCu8eqg2KLTtpaT6HQU0rhvgCUxUc1GpfGFOsLuPXSb8ef4KYI6xADvU7j9J+wGOvAAAAA==[0m[Pipeline] // stage
+[8mha:////4Py3CPq4ywg+CqjfSLfXjnf+69lledEkjQvDDW+PZR/SAAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQDEh2iorXc8AITG+PEugv2haTiRXyNPxCIRMVWOyut5vmCMic4UPKycdgGzHWQXez91ORAqb1EGmRDZ1kTZopOajdosu44oyZ2MEcUsFCwdFhHygE9w0o15m6qaNBXJ07TtldQBHuDBwg1mdkk/sKYYH3tbSb8ef4KYOwYxI6h2G4+x/INtuQqUcEAAAA=[0m[Pipeline] stage
+[8mha:////4PZo90kn5u67dngnQuyvVBZ7pw96Gwk6UH9ajgHV7N/NAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+DOrAycoiUzoiJNerCCUITQtLo/zZJSSdOxNW4Ay2VmPBg2Zas93pDGQOcKBjuNHYWY2t570czJ54pdDdPmTu68pYwkte80bkhpc9rbShpWFUw2AjYamw9RYsmwU44+ZCVl2iqSwrzdhTArBrgCYWYyUmG9C1TgP19VJHwx/kLgKlPwOrDYvXyLD8BobDcwgAAAA==[0m[Pipeline] { (Build)
+[8mha:////4GkLlelYLLJg+3/15K1VKm/JGK1NazzVhbxCbrC/Wbg7AAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUZUVMrFEWThCaEJJG/7dJSjpxIq7GHWipxIQHy7ZkvdcbqhjgRMEwp7GzGFvLej+aObFMobt5yszRlbWEkbxmQmdBSp/XKihpWFWUsOGw1dh6ihZNgh138iFrL9HUlxTm7cihtGqAJxR8JicZ0rdMAfb3UUXCH+cvAKY+Qdk0ix2WZ/UBbwyqm8IAAAA=[0m[Pipeline] container
+[8mha:////4Cqbo+mJul7Zx3nUCng5fUwFTfC98MqZ0AqxFHaXDmWyAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUwIiYukZZOEFoQkgb/V9+UtqJE3E17kBLJSY8WLYl673eUESGE7ETjcXWY6y96ELvpiQG4vYaaBANXURNGClYoeygyNhqqYqShUVZDisJa4t1oOjRJdjIRj90GTS68px42o4Scm/u8IRMTuSkOX3LyLC99SYS/jh/ATB2CfLdfrbD/Cw+y7kUycIAAAA=[0m[Pipeline] {
+[8mha:////4EH64MLasAZwBMyWkDKPoNHL2/XJJ1n3ZdFnY/H8GdVYAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiBB2iSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwZyu3uU/vwBgq0rvS+AAAA[0m[Pipeline] sh
++ ls -lart
+total 416
+drwxr-xr-x    3 node     node          4096 Jan 20 13:44 views
+-rw-r--r--    1 node     node           344 Jan 20 13:44 variables.env
+drwxr-xr-x    4 node     node          4096 Jan 20 13:44 test
+drwxr-xr-x    2 node     node          4096 Jan 20 13:44 services
+drwxr-xr-x    2 node     node          4096 Jan 20 13:44 routes
+drwxr-xr-x    7 node     node          4096 Jan 20 13:44 public
+-rw-r--r--    1 node     node          1619 Jan 20 13:44 package.json
+-rw-r--r--    1 node     node        307556 Jan 20 13:44 package-lock.json
+drwxr-xr-x    2 node     node          4096 Jan 20 13:44 lib
+drwxr-xr-x    3 node     node          4096 Jan 20 13:44 i18n
+-rw-r--r--    1 node     node          2326 Jan 20 13:44 helpers.js
+drwxr-xr-x    2 node     node          4096 Jan 20 13:44 handlers
+-rw-r--r--    1 node     node           135 Jan 20 13:44 cypress.json
+drwxr-xr-x    2 node     node          4096 Jan 20 13:44 bin
+-rw-r--r--    1 node     node           416 Jan 20 13:44 app.json
+-rw-r--r--    1 node     node          5362 Jan 20 13:44 app.js
+-rw-r--r--    1 node     node          4675 Jan 20 13:44 README.md
+-rw-r--r--    1 node     node          1067 Jan 20 13:44 LICENSE
+-rw-r--r--    1 node     node           164 Jan 20 13:44 Dockerfile
+-rw-r--r--    1 node     node             6 Jan 20 13:44 .nvmrc
+-rw-r--r--    1 node     node          3178 Jan 20 13:44 .gitignore
+-rw-r--r--    1 node     node           256 Jan 20 13:44 .eslintrc.js
+-rw-r--r--    1 node     node            27 Jan 20 13:44 .dockerignore
+drwxr-xr-x    2 node     node          4096 Jan 20 13:44 .circleci
+drwxr-xr-x   13 node     node          4096 Jan 20 13:44 .
+drwxr-xr-x    8 node     node          4096 Jan 20 13:44 .git
+drwxr-xr-x    4 node     node          4096 Jan 20 13:44 ..
++ npm install
+
+> nodemon@1.18.10 postinstall /home/jenkins/agent/workspace/nodeapp/node_modules/nodemon
+> node bin/postinstall || exit 0
+
+[32mLove nodemon? You can now support the project via the open collective:[22m[39m
+ > [96m[1mhttps://opencollective.com/nodemon/donate[0m
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/sane/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.7 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.7: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+added 870 packages from 461 contributors and audited 19666 packages in 19.016s
+found 391 vulnerabilities (68 low, 5 moderate, 318 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+[8mha:////4EV6JXzWT82GK2p8sPWvy3ffMCM9yrI+OPXZeZJ0PAJOAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIihKgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrt/lO7N7BnLt++AAAA[0m[Pipeline] }
+[8mha:////4AvfF+uXU/7TJRlMZuIpvTRZi/OZd2a/7WmvnE6S1S53AAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiKGgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrt/lO7N4glvS6+AAAA[0m[Pipeline] // container
+[8mha:////4ASiXuwDNrrI6+dTWQvQDoChMC0HiNbX/Nd1ZzeSasXfAAAAox+LCAAAAAAAAP9tjTESwiAURH/iWNhaeggyqSwcK1uGxhNggghh/idAJJUn8mreQTQzVm6xs2+b93zBOgY4UtDMKhwMxs4w7yZdFssUhqujzCxdWEcYySkmVBbUq9OCgpKCJVUNKw4bhZ2jaFAn2HIr77JxEnVzTqF8Bw616Ud4QMWLOcmQvjAH2N2mPhL+PH8FMHufoG73n2rfl6fofL4AAAA=[0m[Pipeline] }
+[8mha:////4OTaiZyh9CUXol9yS7sjTOockEUuO9251wmZ1cAWPM9mAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICHRKiSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwhQ7nbf2r7BtQlufq+AAAA[0m[Pipeline] // stage
+[8mha:////4A7Lbw6X3/aQaJ0pbPlez4deLcQ5E+UMqwiiFHSDYiFsAAAApx+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQjJBqEqGgtN7zAxMY4se6CfSGpeBFf4w8EIlGx1c5Kq3m+oMwJDpS8bBy2AXMdZBd7PzU5UGovkQbZ0FnWhJmik9oNmqw7zqiJHcwRBSwULB3WkXJAz7BSjbmbKhr01YnTtO0VFMHe4AFCTWY2ib8wJlhfe5sJf56/Ahg7BrFlKDa7z7F8A361JXbBAAAA[0m[Pipeline] stage
+[8mha:////4DGZrvoROZWGgzYdf0+l7WKSZTgJzwvj3F00C3Hx03NBAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogU2BDqxBp14QShCSFp9H9JUtKJE3E17kCgEhMeLNuS9Z4vqIKHhrxmVmFvMHSGDW7UObFEvr84SszSmXWEgZxirUotSXWca0tRwayihAWHpcLOUTCoI6y4FXdRO4G6PkWftwOH0sgbPKDgmRyFj98yeVhfRxkIf5y/AJiGCOV2n223+TyrN7xWSV3CAAAA[0m[Pipeline] { (Docker Task)
+[8mha:////4O5540eqaiIgwI9QCry9BoeGgzlLsA2dayETq0hVePlaAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogUWBFT1ygLJwhNCGmj/8tPSjtxIq7GHWipxIQHy7ZkvdcbishwInaisdh6jLUXXejdlMRA3F4DDaKhi6gJIwUrlB0UGVstVVGysCjLYSVhbbEOFD26BBvZ6Icug0ZXnhNP21FC7s0dnpDJiZw0p28ZGba33kTCH+cvAMYuQX7Yzbafn8UHbGnGmsIAAAA=[0m[Pipeline] container
+[8mha:////4KV+nsYLjDpBKyx9L0Ch88aTyo3WCmVehsyBt+OTYLSRAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+DOrAycohUdEVMrFEXThCaEJJG/7dJSjpxIq7GHWipxIQHy7ZkvdcbyhjgRMFwp7GzGFvLez+aOfFMobt5ytzRlbeEkbzmjc4NKX1ea0NJw6qCwUbAVmPrKVo0CXbCyYesvERTXVKYt6MAZtUATyjETE4ypG+ZAuzvo4qEP85fAEx9AlYfFquXZ/kBAsTc3cIAAAA=[0m[Pipeline] {
+[8mha:////4C5gmGS8D3fcY0vfx0nBCYYoYJukddJG58/BqNZunh16AAAAox+LCAAAAAAAAP9tjTESwiAURH/iWNhaeggyE0vHypah8QSYIEKY/wkQSeWJvJp3EM2MlVvs7NvmPV+wjgGOFDSzCgeDsTPMu0mXxTKF4eooM0sX1hFGcooJlQX16rSgoKRgSVXDisNGYecoGtQJttzKu2ycRN2cUyjfgUNt+hEeUPFiTjKkL8wBdrepj4Q/z18BzD5B3baf2vs3w5BRkb4AAAA=[0m[Pipeline] sh
++ docker build -t demjenkins123/nodeapp .
+Sending build context to Docker daemon   8.15MB
+Step 1/9 : FROM node:9
+ ---> 08a8c8089ab1
+Step 2/9 : WORKDIR /app
+ ---> Using cache
+ ---> 1e23976aebe6
+Step 3/9 : RUN npm install -g contentful-cli
+ ---> Using cache
+ ---> 8c514d8dc4aa
+Step 4/9 : COPY package.json .
+ ---> Using cache
+ ---> 558df0bf9030
+Step 5/9 : RUN npm install
+ ---> Using cache
+ ---> 1c3d7f5a5c75
+Step 6/9 : COPY . .
+ ---> 2b77495f5dbe
+Step 7/9 : USER node
+ ---> Running in a0d2f528f6a1
+Removing intermediate container a0d2f528f6a1
+ ---> ea1efb806c72
+Step 8/9 : EXPOSE 3000
+ ---> Running in d13dec9dd881
+Removing intermediate container d13dec9dd881
+ ---> 8d6b99024ce1
+Step 9/9 : CMD ["npm", "run", "start:dev"]
+ ---> Running in fba3293816e2
+Removing intermediate container fba3293816e2
+ ---> c4c7d277c2bf
+Successfully built c4c7d277c2bf
+Successfully tagged demjenkins123/nodeapp:latest
++ docker login -u demjenkins123 -p ABCabc123!@#
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
++ docker push demjenkins123/nodeapp
+The push refers to repository [docker.io/demjenkins123/nodeapp]
+eeb1a3772ee2: Preparing
+87124f9efbef: Preparing
+1abfbc56f4dd: Preparing
+5df322052f76: Preparing
+c7ff3b8ec4dd: Preparing
+71521673e105: Preparing
+7695686f75c0: Preparing
+e492023cc4f9: Preparing
+cbda574aa37a: Preparing
+8451f9fe0016: Preparing
+858cd8541f7e: Preparing
+a42d312a03bb: Preparing
+dd1eb1fd7e08: Preparing
+e492023cc4f9: Waiting
+cbda574aa37a: Waiting
+8451f9fe0016: Waiting
+858cd8541f7e: Waiting
+a42d312a03bb: Waiting
+dd1eb1fd7e08: Waiting
+71521673e105: Waiting
+7695686f75c0: Waiting
+1abfbc56f4dd: Layer already exists
+87124f9efbef: Layer already exists
+c7ff3b8ec4dd: Layer already exists
+5df322052f76: Layer already exists
+7695686f75c0: Layer already exists
+71521673e105: Layer already exists
+cbda574aa37a: Layer already exists
+e492023cc4f9: Layer already exists
+8451f9fe0016: Layer already exists
+858cd8541f7e: Layer already exists
+a42d312a03bb: Layer already exists
+dd1eb1fd7e08: Layer already exists
+eeb1a3772ee2: Pushed
+latest: digest: sha256:f791dcbb0dcb1cfe8c7fafc20a6b1c674bed8e8899e9da1e6e78a35593443cf6 size: 3056
+[8mha:////4PuQCT4ovUZjbUVftwwhYPimPepkQQsZiISF81nerbsrAAAApB+LCAAAAAAAAP9tjbEOwiAURV9rHFwd/QiaNG7GyZWw+AXYIkLJexSodPKL/DX/QbSJk3e4uecu5/mCdQxwpKCZVTgYjJ1h3k26LJYpDFdHmVm6sI4wklNMqCyoV6cFBSUFS6oaVhw2CjtH0aBOsOVW3mXjJOrmnEL5Dhxq04/wgIoXc5IhfWEOsLtNfST8ef4KYPY+Qd3uP9W+Ad3NsHm+AAAA[0m[Pipeline] }
+[8mha:////4Hi4YVRawuRenvwvDYdNhvktNWKjtPyAveJZsmPEmHIZAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIikKgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrd/lPbN8JP5Su+AAAA[0m[Pipeline] // container
+[8mha:////4HRJaZrboq6qaDsIbxjxPq8Im0MiE0UmZVM/m2uETaVDAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCKGgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrd/lPbN/oNdtq+AAAA[0m[Pipeline] }
+[8mha:////4D1mZ33L3Do1dYdbenflFUkOVHSaKmnwOdo6pxFotdK/AAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiaBBCqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw84NdtDvgAAAA==[0m[Pipeline] // stage
+[8mha:////4KYR3Vw6R/RuFPiOJK/wcuq+x3yrBObmD/vol5dZx4Q8AAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMKREAUSoqK10vACkxjjxLoL9oWk4kV8jT8QEYmKrXammdcbyxRx5OhUY6n1lCqvutC76amBY3sNPKiGL6piShysKu1Qcm1PM5YsFvOyHAuNlaUqcPLkBGvdmIcpgiFXnCVO7qCR+/qOJzI9lcVE+cIYsbn1dWL6df4GMHadIN/uBdnuA+oSoWS9AAAA[0m[Pipeline] }
+[8mha:////4Cby7agGzRIuJNzblrSNMIEPu08BmQJmKhEMxid0AVr9AAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMKRoEKIitZKwwtMYowT6y7YF5KKF/E1/kBEJCq22plmXm8sU8SRo1ONpdZTqrzqQu+mpwaO7TXwoBq+qIopcbCqtEPJtT3NWLJYzMtyLDRWlqrAyZMTrHVjHqYIhlxxlji5g0bu6zueyPRUFhPlC2PE5tbXienX+RvA2HWCfLsXZLsP+a6lx70AAAA=[0m[Pipeline] // node
+[8mha:////4O8qLQ2KjyofjjTWGiImmNUBJx88c6UQfDAb1R3LPOE2AAAAoh+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMJBUCIqWisNLzCJMU6su2BfSCpexNf4AxGRqNhqZ5p5vbFMEUeOTjWWWk+p8qoLvZueGji218CDaviiKqbEwarSDiXX9jRjyWIxL8ux0FhZqgInT06w1o15mCIYcsVZ4uQOGrmv73gi01NZTJQvjBGbW18npl/nbwBj1wny/VaQ7T67L+52vQAAAA==[0m[Pipeline] End of Pipeline
+Finished: SUCCESS

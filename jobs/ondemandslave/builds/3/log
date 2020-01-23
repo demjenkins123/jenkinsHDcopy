@@ -1,0 +1,102 @@
+Started by user [8mha:////4IxpKR9OkGFU7aTKau6j3/nBJGSdPZaMgVwhXmqOHIElAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running in Durability level: MAX_SURVIVABILITY
+[8mha:////4E5B1sbF2tG+VlhgsWQt03w8jdJ5sZUY4eoC3Iy9b80PAAAAoh+LCAAAAAAAAP9tjTEOwjAQBM8BClpKHuFItIiK1krDC0x8GCfWnbEdkooX8TX+gCESFVvtrLSa5wtWKcKBo5UdUu8otU4GP9jS5Mixv3geZcdn2TIl9igbHBs2eJyx4YwwR1SwULBGaj0nRzbDRnX6rmuvydanHMu2V1A5c4MHCFXMWcf8hSnC9jqYxPTz/BXAFEIGsfuclm8zQVqFvQAAAA==[0m[Pipeline] Start of Pipeline
+[8mha:////4KetrvheRQNSHQ/EU1JbY2AZtx+FrrDqPQZJ5NkFmsLTAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycohUghExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jduZBmjwAAAAA==[0m[Pipeline] node
+Still waiting to schedule task
+Waiting for next available executor on ‘toolspod’
+Agent [8mha:////4J7081bpCb5tchMUhdZ8CPQwpfwwxHl4n4+4x9JsvPjHAAAAqR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzhEgZZ/eT83ILSktQi/azUvOzMvGLdxPTUvBJdU9OiHEMAftCkZtIAAAA=[0mjenkins-agent-55rl1 is provisioned from template Kubernetes Pod Template
+---
+apiVersion: "v1"
+kind: "Pod"
+metadata:
+  annotations: {}
+  labels:
+    jenkins: "slave"
+    jenkins/label: "toolspod"
+  name: "jenkins-agent-55rl1"
+spec:
+  containers:
+  - args:
+    - "cat"
+    command:
+    - "/bin/sh"
+    - "-c"
+    image: "demjenkins123/tools"
+    imagePullPolicy: "Always"
+    name: "toolscontainer"
+    resources:
+      limits: {}
+      requests: {}
+    securityContext:
+      privileged: false
+    tty: true
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+    workingDir: "/home/jenkins/agent"
+  - env:
+    - name: "JENKINS_SECRET"
+      value: "********"
+    - name: "JENKINS_TUNNEL"
+      value: "10.96.197.11:50000"
+    - name: "JENKINS_AGENT_NAME"
+      value: "jenkins-agent-55rl1"
+    - name: "JENKINS_NAME"
+      value: "jenkins-agent-55rl1"
+    - name: "JENKINS_AGENT_WORKDIR"
+      value: "/home/jenkins/agent"
+    - name: "JENKINS_URL"
+      value: "http://34.107.220.208/"
+    image: "jenkins/jnlp-slave:3.35-5-alpine"
+    name: "jnlp"
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  hostNetwork: false
+  nodeSelector:
+    beta.kubernetes.io/os: "linux"
+  restartPolicy: "Never"
+  securityContext: {}
+  volumes:
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"
+
+Running on [8mha:////4MptL8kg/bxmaL62/Aie5e7NevGdFEhsG+bvIqVWX9eWAAAAqh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzhEgY5/eT83ILSktQi/azUvOzMvGLdxPTUvBJdU9OiHEN9AEwTIN3TAAAA[0mjenkins-agent-55rl1 in /home/jenkins/agent/workspace/ondemandslave
+[8mha:////4O2MiGpj9hudVOpa9GaQLZaKUuUK2NIGCR2xTeR7jcRTAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gA0xsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfoP95RwAAAAA==[0m[Pipeline] {
+[8mha:////4LM1EatL2gH+/pZBsjb94+00lEjU0f2SgR8G3YUNUXHHAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gQkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jc09154wAAAAA==[0m[Pipeline] stage
+[8mha:////4AeKZqYVs+TBASPY58oMxPVp3ue8JJF1WWLVrjvM62jzAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0ggUxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jek7ggRwAAAAA==[0m[Pipeline] { (Checkout)
+[8mha:////4PXNtcFFA/o3w0ylM0N6vWu/rfzL1FPfTL6ddAbPwf5OAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbaWGsbAmNJ0AWEZb8zwLrbuWJvJp3kLiJlZNMMm+a93rDOic4UbLcG+wdZu14DKOti0+U+lugiXu6ck2YKRguzSSpM+cFJRUDS1gDKwEbgzpQdmgLbIVXD9UGhba9lFS/o4DGdQM8gYlqLiqVL8wJdvexy4Q/z18BzLEA29ce4gfg7KmOvAAAAA==[0m[Pipeline] git
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/gabrielf/maven-samples.git
+ > git init /home/jenkins/agent/workspace/ondemandslave # timeout=10
+Fetching upstream changes from https://github.com/gabrielf/maven-samples.git
+ > git --version # timeout=10
+ > git fetch --tags --force --progress -- https://github.com/gabrielf/maven-samples.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 4d47c7d9bd4ca5ea765d78c76020dd71cf133e8b (refs/remotes/origin/master)
+ > git config remote.origin.url https://github.com/gabrielf/maven-samples.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/gabrielf/maven-samples.git # timeout=10
+Fetching upstream changes from https://github.com/gabrielf/maven-samples.git
+ > git fetch --tags --force --progress -- https://github.com/gabrielf/maven-samples.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 4d47c7d9bd4ca5ea765d78c76020dd71cf133e8b # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b master 4d47c7d9bd4ca5ea765d78c76020dd71cf133e8b # timeout=10
+Commit message: "Merge pull request #1 from narendra2244/patch-1"
+ > git rev-list --no-walk 4d47c7d9bd4ca5ea765d78c76020dd71cf133e8b # timeout=10
+[8mha:////4CJ6ClFou2YJgvX5mUQDtMBQILX6fikfnKfEUgkCl9/3AAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbGRNjZUtoPAGyiLDkfxZYdytP5NW8g8RNrJxkknnTvNcb1jnBiZLl3mDvMGvHYxhtXXyi1N8CTdzTlWvCTMFwaSZJnTkvKKkYWMIaWAnYGNSBskNbYCu8eqg2KLTtpaT6HQU0rhvgCUxUc1GpfGFOsLuPXSb8ef4KYI6xADvU7j9Dg2gqvAAAAA==[0m[Pipeline] }
+[8mha:////4OuK6S+jQ840Gkop38h9A0eOsIqM/B3lS1WMMLOxww9gAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQRbWRhjZUtoPAGyiLDkfxZYdytP5NW8g8RNrJxkknnTvNcb1jnBiZLl3mDvMGvHYxhtXXyi1N8CTdzTlWvCTMFwaSZJnTkvKKkYWMIaWAnYGNSBskNbYCu8eqg2KLTtpaT6HQU0rhvgCUxUc1GpfGFOsLuPXSb8ef4KYI6xADvU7j9J+wGOvAAAAA==[0m[Pipeline] // stage
+[8mha:////4A8HlrQ9UzR2Jmun6LG2adbT3VANXrdponfHVIFFImc4AAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMIBiQ5R0VppeIFJjHFi3QX7QlLxIr7GH4iIRMVWO9PM641lijhydKqx1HpKlVdd6N301MCxvQYeVMMXVTElDlaVdii5tqcZSxaLeVmOhcbKUhU4eXKCtW7MwxTBkCvOEid30Mh9fccTmZ7KYqJ8YYzY3Po6Mf06fwMYO0G2F+S7bfcBVVhdU70AAAA=[0m[Pipeline] sh
++ mvn --version
+/home/jenkins/agent/workspace/ondemandslave@tmp/durable-890ca427/script.sh: line 1: mvn: not found
+[8mha:////4C3KUPGCXol1k334r1C/VCQ6gSZIBvJKkWtTvuL1h8Y9AAAAox+LCAAAAAAAAP9tjbEOgjAURS8YB1dHP6KExM04uTYsfkGFWgvNe9g+hMkv8tf8B4kkTt7pnrOc1xvrFHHk6FRrqfOUaq/6MLj5qZFjdw08qpYvqmZKHKyq7FhxY08LViwWy7IcK42NpTpw8uQEW92ahymCIVecJc7uoJH75o4nMj2XxUT5whSxuw1NYvp1/gYw9b0gL0tBtv8ANQIl770AAAA=[0m[Pipeline] }
+[8mha:////4OS/swfV+8dwP+aXC8pjsmi18Wf+EtyUc3ZN6FVYNnMNAAAAoh+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMIRUCIqWisNLzCJMU6su2BfSCpexNf4AxGRqNhqZ5p5vbFMEUeOTjWWWk+p8qoLvZueGji218CDaviiKqbEwarSDiXX9jRjyWIxL8ux0FhZqgInT06w1o15mCIYcsVZ4uQOGrmv73gi01NZTJQvjBGbW18npl/nbwBj1wny7U6Q7T9G7eE2vQAAAA==[0m[Pipeline] // node
+[8mha:////4PeJd9+q94mpqrPCSL0TJrskru2oBmmHC5zAiX9HVxSPAAAAoh+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMIRUCIqWisNLzCJMU6su2BfSCpexNf4AxGRqNhqZ5p5vbFMEUeOTjWWWk+p8qoLvZueGji218CDaviiKqbEwarSDiXX9jRjyWIxL8ux0FhZqgInT06w1o15mCIYcsVZ4uQOGrmv73gi01NZTJQvjBGbW18npl/nbwBj1wny7V6Q7T5g9IZ8vQAAAA==[0m[Pipeline] End of Pipeline
+ERROR: script returned exit code 127
+Finished: FAILURE
