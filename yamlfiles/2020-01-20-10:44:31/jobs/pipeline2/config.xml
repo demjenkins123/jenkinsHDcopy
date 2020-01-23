@@ -1,0 +1,21 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.36">
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.78">
+    <script>node(&apos;mavenpod&apos;) {
+        stage(&apos;Checkout&apos;){
+            git &apos;https://github.com/gabrielf/maven-samples.git&apos;
+        }
+        stage(&apos;Build&apos;) {
+            container(&apos;maven&apos;) {
+              sh &quot;mvn clean package&quot;
+            }
+        } // stage
+    }</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

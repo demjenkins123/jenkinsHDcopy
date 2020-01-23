@@ -1,0 +1,74 @@
+--- Copying files at Mon Jan 13 14:51:12 UTC 2020
+INSTALLED init.groovy.d/security.groovy
+INSTALLED plugins/matrix-project.jpi : 1.14
+INSTALLED plugins/token-macro.jpi : 2.10
+INSTALLED plugins/git-client.jpi : 3.0.0
+INSTALLED plugins/authentication-tokens.jpi : 1.3
+INSTALLED plugins/workflow-multibranch.jpi : 2.21
+INSTALLED plugins/workflow-support.jpi : 3.3
+INSTALLED plugins/pipeline-input-step.jpi : 2.11
+INSTALLED plugins/workflow-step-api.jpi : 2.22
+INSTALLED plugins/pipeline-graph-analysis.jpi : 1.10
+INSTALLED plugins/workflow-job.jpi : 2.36
+INSTALLED plugins/jquery-detached.jpi : 1.2.1
+INSTALLED plugins/pipeline-rest-api.jpi : 2.12
+INSTALLED plugins/google-oauth-plugin.jpi : 1.0.0
+INSTALLED plugins/plain-credentials.jpi : 1.5
+INSTALLED plugins/durable-task.jpi : 1.33
+INSTALLED plugins/lockable-resources.jpi : 2.7
+INSTALLED plugins/branch-api.jpi : 2.5.5
+INSTALLED plugins/pipeline-stage-step.jpi : 2.3
+INSTALLED plugins/apache-httpcomponents-client-4-api.jpi : 4.5.10-2.0
+INSTALLED plugins/workflow-scm-step.jpi : 2.9
+INSTALLED plugins/kubernetes.jpi : 1.22.5
+INSTALLED plugins/jackson2-api.jpi : 2.10.2
+INSTALLED plugins/momentjs.jpi : 1.1.1
+INSTALLED plugins/jsch.jpi : 0.1.55.1
+INSTALLED plugins/workflow-basic-steps.jpi : 2.19
+INSTALLED plugins/display-url-api.jpi : 2.3.2
+INSTALLED plugins/handlebars.jpi : 1.1.1
+INSTALLED plugins/pipeline-model-definition.jpi : 1.5.0
+INSTALLED plugins/git-server.jpi : 1.9
+INSTALLED plugins/cloudbees-folder.jpi : 6.10.1
+INSTALLED plugins/variant.jpi : 1.3
+INSTALLED plugins/docker-commons.jpi : 1.16
+INSTALLED plugins/scm-api.jpi : 2.6.3
+INSTALLED plugins/pipeline-milestone-step.jpi : 1.3.1
+INSTALLED plugins/pipeline-model-api.jpi : 1.5.0
+INSTALLED plugins/ssh-slaves.jpi : 1.31.0
+INSTALLED plugins/git.jpi : 4.0.0
+INSTALLED plugins/pipeline-model-extensions.jpi : 1.5.0
+INSTALLED plugins/junit.jpi : 1.28
+INSTALLED plugins/workflow-durable-task-step.jpi : 2.35
+INSTALLED plugins/bouncycastle-api.jpi : 2.18
+INSTALLED plugins/workflow-aggregator.jpi : 2.6
+INSTALLED plugins/docker-plugin.jpi : 1.1.9
+INSTALLED plugins/ace-editor.jpi : 1.1
+INSTALLED plugins/pipeline-model-declarative-agent.jpi : 1.1.1
+INSTALLED plugins/workflow-cps-global-lib.jpi : 2.15
+INSTALLED plugins/script-security.jpi : 1.68
+INSTALLED plugins/oauth-credentials.jpi : 0.4
+INSTALLED plugins/workflow-cps.jpi : 2.78
+INSTALLED plugins/structs.jpi : 1.20
+INSTALLED plugins/mailer.jpi : 1.29
+INSTALLED plugins/docker-java-api.jpi : 3.0.14
+INSTALLED plugins/credentials-binding.jpi : 1.20
+INSTALLED plugins/kubernetes-credentials.jpi : 0.6.0
+INSTALLED plugins/credentials.jpi : 2.3.0
+INSTALLED plugins/docker-workflow.jpi : 1.21
+INSTALLED plugins/pipeline-stage-view.jpi : 2.12
+INSTALLED plugins/trilead-api.jpi : 1.0.5
+INSTALLED plugins/kubernetes-client-api.jpi : 4.6.4-2
+INSTALLED plugins/pipeline-stage-tags-metadata.jpi : 1.5.0
+INSTALLED plugins/pipeline-build-step.jpi : 2.11
+INSTALLED plugins/workflow-api.jpi : 2.38
+INSTALLED plugins/ssh-credentials.jpi : 1.18
+--- Copying files at Mon Jan 13 15:36:14 UTC 2020
+--- Copying files at Mon Jan 13 15:42:33 UTC 2020
+--- Copying files at Mon Jan 13 15:43:58 UTC 2020
+--- Copying files at Tue Jan 14 03:17:15 UTC 2020
+--- Copying files at Tue Jan 14 03:57:06 UTC 2020
+--- Copying files at Fri Jan 17 02:36:06 UTC 2020
+--- Copying files at Mon Jan 20 03:29:43 UTC 2020
+--- Copying files at Mon Jan 20 13:34:16 UTC 2020
+--- Copying files at Tue Jan 21 03:09:43 UTC 2020

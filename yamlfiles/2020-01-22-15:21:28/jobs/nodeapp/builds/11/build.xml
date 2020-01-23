@@ -1,0 +1,88 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-build plugin="workflow-job@2.36">
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>admin</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <org.jenkinsci.plugins.workflow.libs.LibrariesAction plugin="workflow-cps-global-lib@2.15">
+      <libraries/>
+    </org.jenkinsci.plugins.workflow.libs.LibrariesAction>
+    <jenkins.model.InterruptedBuildAction>
+      <causes class="com.google.common.collect.ImmutableList">
+        <jenkins.model.CauseOfInterruption_-UserInterruption>
+          <user>admin</user>
+        </jenkins.model.CauseOfInterruption_-UserInterruption>
+      </causes>
+    </jenkins.model.InterruptedBuildAction>
+    <com.sonyericsson.rebuild.RebuildAction plugin="rebuild@1.31"/>
+  </actions>
+  <queueId>3</queueId>
+  <timestamp>1579700343186</timestamp>
+  <startTime>1579700343203</startTime>
+  <result>ABORTED</result>
+  <duration>1004196</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <execution class="org.jenkinsci.plugins.workflow.cps.CpsFlowExecution">
+    <result>ABORTED</result>
+    <script>node(&apos;nodemavenpod&apos;) {
+        stage(&apos;Checkout&apos;){
+            git &apos;https://github.com/contentful/the-example-app.nodejs.git&apos;
+
+        }
+        stage(&apos;Build&apos;) {
+            container(&apos;nodemaven&apos;) {
+              sh &quot;&quot;&quot;ls -lart
+              npm install&quot;&quot;&quot;
+            }
+        } // stage
+        stage(&apos;Docker Task&apos;){
+            container(&apos;docker&apos;) {
+                sh &quot;&quot;&quot;
+                docker build -t demjenkins123/nodeapp .
+                docker login -u &apos;demjenkins123&apos; -p &apos;ABCabc123!@#&apos;
+                docker push demjenkins123/nodeapp 
+                &quot;&quot;&quot;
+            }
+        }
+    }</script>
+    <loadedScripts class="map"/>
+    <durabilityHint>MAX_SURVIVABILITY</durabilityHint>
+    <timings class="map">
+      <entry>
+        <string>flowNode</string>
+        <long>148011595</long>
+      </entry>
+      <entry>
+        <string>classLoad</string>
+        <long>270868006</long>
+      </entry>
+      <entry>
+        <string>run</string>
+        <long>991489137</long>
+      </entry>
+      <entry>
+        <string>parse</string>
+        <long>672680263</long>
+      </entry>
+      <entry>
+        <string>saveProgram</string>
+        <long>337552172</long>
+      </entry>
+    </timings>
+    <sandbox>true</sandbox>
+    <iota>5</iota>
+    <head>1:5</head>
+    <done>true</done>
+    <resumeBlocked>false</resumeBlocked>
+  </execution>
+  <completed>true</completed>
+  <checkouts class="hudson.util.PersistedList"/>
+</flow-build>

@@ -1,0 +1,33 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.36">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.78">
+    <script>node(&apos;nodepod&apos;) {
+        stage(&apos;Checkout&apos;){
+            git &apos;https://github.com/contentful/the-example-app.nodejs.git&apos;
+
+        }
+        stage(&apos;Build&apos;) {
+            container(&apos;node&apos;) {
+              sh &quot;&quot;&quot;ls -lart
+              npm install&quot;&quot;&quot;
+            }
+        } // stage
+        stage(&apos;Docker Task&apos;){
+            container(&apos;docker&apos;) {
+                sh &quot;&quot;&quot;
+                docker build -t demjenkins123/nodeapp .
+                docker login -u &apos;demjenkins123&apos; -p &apos;ABCabc123!@#&apos;
+                docker push demjenkins123/nodeapp 
+                &quot;&quot;&quot;
+            }
+        }
+    }</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

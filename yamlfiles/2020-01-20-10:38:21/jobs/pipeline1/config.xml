@@ -1,0 +1,33 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.36">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.78">
+    <script>podTemplate(
+  label: &apos;maven-pod&apos;,
+  containers: [
+      containerTemplate(image: &apos;docker:17.11.0-ce&apos;, name: &apos;docker&apos;, command: &apos;cat&apos;, ttyEnabled: true),
+      containerTemplate(image: &apos;maven:3.3.9-jdk-8-alpine&apos;, name: &apos;maven&apos;, command: &apos;cat&apos;, ttyEnabled: true)
+  ],
+  volumes: [hostPathVolume(hostPath: &apos;/var/run/docker.sock&apos;, mountPath: &apos;/var/run/docker.sock&apos;)]
+  )
+{
+    node(&apos;maven-pod&apos;) {
+        stage(&apos;Checkout&apos;){
+            git &apos;https://github.com/gabrielf/maven-samples.git&apos;
+        }
+        stage(&apos;Build&apos;) {
+            container(&apos;maven&apos;) {
+              sh &quot;mvn clean package&quot;
+            }
+        } // stage
+    } // node
+} // podTemplate: docker
+</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

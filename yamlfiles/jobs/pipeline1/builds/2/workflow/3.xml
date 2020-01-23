@@ -1,0 +1,90 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<Tag plugin="workflow-support@3.3">
+  <node class="cps.n.StepStartNode" plugin="workflow-cps@2.78">
+    <parentIds>
+      <string>2</string>
+    </parentIds>
+    <id>3</id>
+    <descriptorId>org.csanchez.jenkins.plugins.kubernetes.pipeline.PodTemplateStep</descriptorId>
+  </node>
+  <actions>
+    <s.a.LogStorageAction/>
+    <cps.a.ArgumentsActionImpl plugin="workflow-cps@2.78">
+      <arguments>
+        <entry>
+          <string>volumes</string>
+          <list>
+            <org.jenkinsci.plugins.structs.describable.UninstantiatedDescribable plugin="structs@1.20">
+              <symbol>hostPathVolume</symbol>
+              <arguments class="linked-hash-map">
+                <entry>
+                  <string>hostPath</string>
+                  <string>/var/run/docker.sock</string>
+                </entry>
+                <entry>
+                  <string>mountPath</string>
+                  <string>/var/run/docker.sock</string>
+                </entry>
+              </arguments>
+            </org.jenkinsci.plugins.structs.describable.UninstantiatedDescribable>
+          </list>
+        </entry>
+        <entry>
+          <string>containers</string>
+          <list>
+            <org.jenkinsci.plugins.structs.describable.UninstantiatedDescribable plugin="structs@1.20">
+              <symbol>containerTemplate</symbol>
+              <arguments class="linked-hash-map">
+                <entry>
+                  <string>image</string>
+                  <string>docker:17.11.0-ce</string>
+                </entry>
+                <entry>
+                  <string>name</string>
+                  <string>docker</string>
+                </entry>
+                <entry>
+                  <string>command</string>
+                  <string>cat</string>
+                </entry>
+                <entry>
+                  <string>ttyEnabled</string>
+                  <boolean>true</boolean>
+                </entry>
+              </arguments>
+            </org.jenkinsci.plugins.structs.describable.UninstantiatedDescribable>
+            <org.jenkinsci.plugins.structs.describable.UninstantiatedDescribable plugin="structs@1.20">
+              <symbol>containerTemplate</symbol>
+              <arguments class="linked-hash-map">
+                <entry>
+                  <string>image</string>
+                  <string>maven:3.3.9-jdk-8-alpine</string>
+                </entry>
+                <entry>
+                  <string>name</string>
+                  <string>maven</string>
+                </entry>
+                <entry>
+                  <string>command</string>
+                  <string>cat</string>
+                </entry>
+                <entry>
+                  <string>ttyEnabled</string>
+                  <boolean>true</boolean>
+                </entry>
+              </arguments>
+            </org.jenkinsci.plugins.structs.describable.UninstantiatedDescribable>
+          </list>
+        </entry>
+        <entry>
+          <string>label</string>
+          <string>test-pod</string>
+        </entry>
+      </arguments>
+      <isUnmodifiedBySanitization>true</isUnmodifiedBySanitization>
+    </cps.a.ArgumentsActionImpl>
+    <wf.a.TimingAction plugin="workflow-api@2.38">
+      <startTime>1578929846113</startTime>
+    </wf.a.TimingAction>
+  </actions>
+</Tag>
